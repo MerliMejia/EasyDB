@@ -17,7 +17,7 @@ public protocol DBModel{
     static func fromJson(json: [String: String]) ->ModelType
 }
 
-extension DBModel where ModelType: CustomStringConvertible{
+public extension DBModel where ModelType: CustomStringConvertible{
     func getConnection() -> Connection?{
         return DBStateManagement.data.connection
     }
