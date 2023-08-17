@@ -63,7 +63,7 @@ public class DBStateManagement{
         return false
     }
     
-    private init(){
+    public init(){
         
     }
 }
