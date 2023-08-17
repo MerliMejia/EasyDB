@@ -19,7 +19,7 @@ public protocol DBModel{
 
 public extension DBModel where ModelType: CustomStringConvertible{
     func getConnection() -> Connection?{
-        return DBStateManagement.data.connection
+        return DBStateManagement.connection
     }
     func getColumnNames()->[String]{
         var arr: [String] = []

@@ -31,13 +31,10 @@ public struct DBConfig {
 
 
 public class DBStateManagement{
+    public static var connection: Connection? = nil
+    public static var dialect: DBDialect = .postgresql
     
-    static let data = DBStateManagement()
-    
-    public var connection: Connection? = nil
-    public var dialect: DBDialect = .postgresql
-    
-    fileprivate func connectPostgreSQL(config:DBConfig)->Bool{
+    fileprivate static func connectPostgreSQL(config:DBConfig)->Bool{
         var didConnected = true
         do {
             var configuration = PostgresClientKit.ConnectionConfiguration()
@@ -47,7 +44,7 @@ public class DBStateManagement{
             configuration.credential = .scramSHA256(password: config.password)
             configuration.ssl = config.ssl;
 
-            DBStateManagement.data.connection = try PostgresClientKit.Connection(configuration: configuration)
+            DBStateManagement.connection = try PostgresClientKit.Connection(configuration: configuration)
         } catch {
             didConnected = false
             print(error) // better error handling goes here
@@ -55,7 +52,7 @@ public class DBStateManagement{
         return didConnected
     }
     
-    public func connect(config:DBConfig)-> Bool{
+    public static func connect(config:DBConfig)-> Bool{
         if dialect == .postgresql{
             return connectPostgreSQL(config: config)
         }
