@@ -13,13 +13,22 @@ public enum DBDialect{
     case postgresql
 }
 
-public struct DBConfig{
-    var host:String
-    var dbName:String
-    var user:String
-    var password:String
-    var ssl:Bool
+public struct DBConfig {
+    public var host: String
+    public var dbName: String
+    public var user: String
+    public var password: String
+    public var ssl: Bool
+
+    public init(host: String, dbName: String, user: String, password: String, ssl: Bool) {
+        self.host = host
+        self.dbName = dbName
+        self.user = user
+        self.password = password
+        self.ssl = ssl
+    }
 }
+
 
 public class DBStateManagement{
     
