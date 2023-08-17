@@ -8,7 +8,7 @@
 import Foundation
 import PostgresClientKit
 
-protocol DBModel{
+public protocol DBModel{
     associatedtype ModelType
     func print()
     func getColumnNames()->[String]
@@ -19,7 +19,7 @@ protocol DBModel{
 
 extension DBModel where ModelType: CustomStringConvertible{
     func getConnection() -> Connection?{
-        return StateManagement.data.connection
+        return DBStateManagement.data.connection
     }
     func getColumnNames()->[String]{
         var arr: [String] = []

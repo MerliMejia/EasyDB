@@ -8,9 +8,9 @@
 import Foundation
 import PostgresClientKit
 
-class StateManagement{
+public class DBStateManagement{
     
-    static let data = StateManagement()
+    static let data = DBStateManagement()
     
     var connection: Connection? = nil
     
