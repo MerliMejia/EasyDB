@@ -34,8 +34,8 @@ public class DBStateManagement{
     
     static let data = DBStateManagement()
     
-    var connection: Connection? = nil
-    var dialect: DBDialect = .postgresql
+    public var connection: Connection? = nil
+    public var dialect: DBDialect = .postgresql
     
     fileprivate func connectPostgreSQL(config:DBConfig)->Bool{
         var didConnected = true
@@ -55,7 +55,7 @@ public class DBStateManagement{
         return didConnected
     }
     
-    func connect(config:DBConfig)-> Bool{
+    public func connect(config:DBConfig)-> Bool{
         if dialect == .postgresql{
             return connectPostgreSQL(config: config)
         }
@@ -63,7 +63,7 @@ public class DBStateManagement{
         return false
     }
     
-    public init(){
+    private init(){
         
     }
 }
